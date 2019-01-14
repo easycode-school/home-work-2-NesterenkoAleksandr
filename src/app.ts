@@ -59,7 +59,7 @@ class Audi extends Car {
     public drive(miles: number): void {
         if (miles <= 0) return console.log("Number of miles must be greater than zero");
 
-        const possibleMiles = this._fuel / Audi.expense;
+        const possibleMiles: number = this._fuel / Audi.expense;
 
         this._mileage += possibleMiles <= miles ? possibleMiles : miles;
         this._fuel = possibleMiles <= miles ? 0 : this._fuel - miles * Audi.expense;
