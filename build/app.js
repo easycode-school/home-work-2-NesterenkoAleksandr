@@ -4,8 +4,8 @@
  */
 class Car {
     constructor(mileage, fuel) {
-        this._mileage = mileage;
-        this._fuel = fuel;
+        this.__mileage = mileage;
+        this.__fuel = fuel;
     }
 }
 /**
@@ -27,7 +27,7 @@ class Audi extends Car {
      * @returns {number}
      */
     get fuel() {
-        return this._fuel;
+        return this.__fuel;
     }
     /**
      * Колличество миль на спидометре
@@ -35,7 +35,7 @@ class Audi extends Car {
      * @returns {number}
      */
     get mileage() {
-        return this._mileage;
+        return this.__mileage;
     }
     /**
      * Проехать указанное колличество миль
@@ -46,10 +46,10 @@ class Audi extends Car {
     drive(miles) {
         if (miles <= 0)
             return console.log("Number of miles must be greater than zero");
-        const possibleMiles = this._fuel / Audi.expense;
-        this._mileage += possibleMiles <= miles ? possibleMiles : miles;
-        this._fuel = possibleMiles <= miles ? 0 : this._fuel - miles * Audi.expense;
-        if (!this._fuel)
+        const possibleMiles = this.__fuel / Audi.expense;
+        this.__mileage += possibleMiles <= miles ? possibleMiles : miles;
+        this.__fuel = possibleMiles <= miles ? 0 : this.__fuel - miles * Audi.expense;
+        if (!this.__fuel)
             return console.log("You need to refuel");
     }
     /**
@@ -60,7 +60,7 @@ class Audi extends Car {
     refuel(fuel) {
         if (fuel <= 0)
             return console.log("The amount of fuel must be greater than zero");
-        this._fuel += fuel;
+        this.__fuel += fuel;
     }
 }
 /**

@@ -3,12 +3,12 @@
  * @abstract
  */
 abstract class Car {
-    protected _mileage: number;
-    protected _fuel: number;
+    protected __mileage: number;
+    protected __fuel: number;
 
     constructor(mileage: number, fuel: number) {
-        this._mileage = mileage;
-        this._fuel = fuel;
+        this.__mileage = mileage;
+        this.__fuel = fuel;
     }
 
     public abstract drive(miles: number): void;
@@ -33,13 +33,18 @@ class Audi extends Car {
      */
     public static expense: number = 0.05;
 
+    // Колличество миль на спидометре
+    protected __mileage: number;
+    // Остаток топлива в баке автомобиля
+    protected __fuel: number;
+
     /**
      * Остаток топлива в баке автомобиля
      * @public
      * @returns {number}
      */
     public get fuel(): number {
-        return this._fuel;
+        return this.__fuel;
     }
 
     /**
@@ -48,7 +53,7 @@ class Audi extends Car {
      * @returns {number}
      */
     public get mileage(): number {
-        return this._mileage;
+        return this.__mileage;
     }
 
     constructor(mileage: number, fuel: number) {
@@ -64,12 +69,12 @@ class Audi extends Car {
     public drive(miles: number): void {
         if (miles <= 0) return console.log("Number of miles must be greater than zero");
 
-        const possibleMiles: number = this._fuel / Audi.expense;
+        const possibleMiles: number = this.__fuel / Audi.expense;
 
-        this._mileage += possibleMiles <= miles ? possibleMiles : miles;
-        this._fuel = possibleMiles <= miles ? 0 : this._fuel - miles * Audi.expense;
+        this.__mileage += possibleMiles <= miles ? possibleMiles : miles;
+        this.__fuel = possibleMiles <= miles ? 0 : this.__fuel - miles * Audi.expense;
 
-        if (!this._fuel) return console.log("You need to refuel");
+        if (!this.__fuel) return console.log("You need to refuel");
     }
 
     /**
@@ -79,6 +84,6 @@ class Audi extends Car {
      */
     public refuel(fuel: number): void { 
         if (fuel <= 0) return console.log("The amount of fuel must be greater than zero");       
-        this._fuel += fuel;
+        this.__fuel += fuel;
     }
 }
