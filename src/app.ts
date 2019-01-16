@@ -26,11 +26,12 @@ abstract class Car {
 *  @property refuel - метод "Заправить"
  */
 class Audi extends Car {
+    /**
+     * Расход топлива (литров/милю)
+     * @public
+     * @static
+     */
     public static expense: number = 0.05;
-
-    constructor(mileage: number, fuel: number) {
-        super(mileage, fuel);
-    }
 
     /**
      * Остаток топлива в баке автомобиля
@@ -48,6 +49,10 @@ class Audi extends Car {
      */
     public get mileage(): number {
         return this._mileage;
+    }
+
+    constructor(mileage: number, fuel: number) {
+        super(mileage, fuel);
     }
 
     /**

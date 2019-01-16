@@ -63,4 +63,9 @@ class Audi extends Car {
         this._fuel += fuel;
     }
 }
+/**
+ * Расход топлива (литров/милю)
+ * @public
+ * @static
+ */
 Audi.expense = 0.05;
